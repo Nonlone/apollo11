@@ -12,3 +12,13 @@ server:
 
 logging:
   file: /opt/logs/100003171/apollo-configservice.log
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    status-page-url-path: /info
+    health-check-url-path: /health
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.99.101:8761/eureka/

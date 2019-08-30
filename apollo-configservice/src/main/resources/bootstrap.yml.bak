@@ -1,20 +1,24 @@
 eureka:
   instance:
-    hostname: ${hostname:localhost}
-    preferIpAddress: true
+#    hostname: ${hostname:localhost}
+#    preferIpAddress: true
+    prefer-ip-address: true
     status-page-url-path: /info
     health-check-url-path: /health
-  server:
-    peerEurekaNodesUpdateIntervalMs: 60000
-    enableSelfPreservation: false
   client:
-    serviceUrl:
+#    serviceUrl:
       # This setting will be overridden by eureka.service.url setting from ApolloConfigDB.ServerConfig or System Property
       # see com.ctrip.framework.apollo.biz.eureka.ApolloEurekaClientConfig
-      defaultZone: http://${eureka.instance.hostname}:8080/eureka/
+#      defaultZone: http://${eureka.instance.hostname}:8080/eureka/
+#      defaultZone: http://192.168.99.100:8761/
+
     healthcheck:
       enabled: true
-    eurekaServiceUrlPollIntervalSeconds: 60
+#    eurekaServiceUrlPollIntervalSeconds: 60
+    service-url:
+      defaultZone: http://192.168.99.101:8761/eureka/
+#    fetch-registry: false
+#    register-with-eureka: false
 
 management:
   health:
